@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+  claude-proxy:
+    image: ghcr.io/missuo/claude-proxy:latest
+    restart: always
+    ports:
+      - "8080:8080"
