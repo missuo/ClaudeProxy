@@ -14,12 +14,11 @@
 [6]: https://img.shields.io/docker/pulls/missuo/ClaudeProxy?logo=docker
 [7]: https://img.shields.io/github/v/release/missuo/ClaudeProxy?logo=smartthings
 
-# ClaudeProxy
 Due to the strict restrictions of the Anthropic Claude API, it can only be used in specific countries, and even when enabling the API, you have to choose whether it will be accessed outside the selected countries. If so, you also need to choose which country it will be accessed in. If this rule is violated, the account may be directly blocked. So, Claude Proxy allows you to fix a single IP for easy and secure access to the Claude API.
 
 ## Recommendations
 - Use the IP of the country you selected when you activated the API
-- Use residential IP, not commercial ones.
+- Use native IP instead of broadcasting.
 - Do not frequently change IP
 
 ## Start Claude Proxy
