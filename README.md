@@ -11,7 +11,7 @@
 [3]: https://goreportcard.com/badge/github.com/missuo/ClaudeProxy
 [4]: https://api.codeclimate.com/v1/badges/b5b30239174fc6603aca/maintainability
 [5]: https://img.shields.io/github/license/missuo/ClaudeProxy
-[6]: https://img.shields.io/docker/pulls/missuo/claudeproxy?logo=docker
+[6]: https://img.shields.io/docker/pulls/missuo/claude-proxy?logo=docker
 [7]: https://img.shields.io/github/v/release/missuo/ClaudeProxy?logo=smartthings
 
 Due to the strict restrictions of the Anthropic Claude API, it can only be used in specific countries, and even when enabling the API, you have to choose whether it will be accessed outside the selected countries. If so, you also need to choose which country it will be accessed in. If this rule is violated, the account may be directly blocked. So, Claude Proxy allows you to fix a single IP for easy and secure access to the Claude API.
