@@ -2,7 +2,7 @@
  * @Author: Vincent Yang
  * @Date: 2024-03-09 08:46:40
  * @LastEditors: Vincent Yang
- * @LastEditTime: 2024-03-09 08:56:13
+ * @LastEditTime: 2024-03-09 11:27:26
  * @FilePath: /ClaudeProxy/main.go
  * @Telegram: https://t.me/missuo
  * @GitHub: https://github.com/missuo
@@ -13,6 +13,7 @@ package main
 
 import (
 	"bytes"
+	"compress/gzip"
 	"flag"
 	"fmt"
 	"io"
@@ -57,8 +58,22 @@ func proxyRequest(c *gin.Context) {
 	}
 	defer resp.Body.Close()
 
-	// Read the response body
-	responseBody, err := io.ReadAll(resp.Body)
+	// Check if the response is compressed
+	var reader io.ReadCloser
+	switch resp.Header.Get("Content-Encoding") {
+	case "gzip":
+		reader, err = gzip.NewReader(resp.Body)
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to create gzip reader"})
+			return
+		}
+		defer reader.Close()
+	default:
+		reader = resp.Body
+	}
+
+	// Read the (decompressed) response body
+	responseBody, err := io.ReadAll(reader)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to read response body"})
 		return
